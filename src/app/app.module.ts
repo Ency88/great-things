@@ -10,13 +10,17 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { GreatThingsListComponent } from './great-things-list/great-things-list.component';
+import { GreatThingItemComponent } from './great-thing-item/great-thing-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopMenuComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    GreatThingsListComponent,
+    GreatThingItemComponent
   ],
   imports: [
     BrowserModule,

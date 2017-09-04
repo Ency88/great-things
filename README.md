@@ -1,3 +1,5 @@
+![alt text](https://travis-ci.org/Ency88/great-things.svg?branch=master)
+
 # GreatThings
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.6.

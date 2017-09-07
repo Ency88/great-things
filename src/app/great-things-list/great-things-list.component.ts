@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {GreatThingModel} from '../models/greatThingModel';
 
 @Component({
   selector: 'app-great-things-list',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GreatThingsListComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  public greatThings: GreatThingModel[];
 
-  ngOnInit() {
+  constructor() {
   }
 
+  ngOnInit() {
+
+  }
 }

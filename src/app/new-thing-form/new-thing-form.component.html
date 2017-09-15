@@ -1,0 +1,35 @@
+<div class="col-md-offset-3 col-md-6">
+  <form [formGroup]="greatThingForm" novalidate>
+    <div class="form-group">
+      <label for="titleInput">Title</label>
+      <input class="form-control"
+             id="titleInput"
+             placeholder="Enter title"
+             formControlName="title"
+             [ngClass]="{'invalidInput': isErrorVisible('title', 'required')}">
+      <div style="margin-top: 0.5em; color: red"
+           *ngIf="isErrorVisible('title', 'required')">
+        This field is mandatory.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="subTitleInput">Subtitle</label>
+      <input class="form-control"
+             id="subtitleInput"
+             placeholder="Enter subtitle"
+             formControlName="subtitle"
+             [ngClass]="{'invalidInput': isErrorVisible('subtitle', 'required')}">
+      <div style="margin-top: 0.5em; color: red"
+           *ngIf="isErrorVisible('subtitle', 'required')">
+        This field is mandatory.
+      </div>
+    </div>
+    <div style="margin-bottom: 1em">
+      <label class="btn btn-default">
+        Select file <input type="file" hidden (change)="detectFiles($event)">
+      </label>
+    </div>
+    <button class="btn btn-primary" (click)="addGreatThing()" [disabled]="!isFormValid()">Add great thing</button>
+  </form>
+</div>
+

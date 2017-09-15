@@ -4,6 +4,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 import 'rxjs/add/observable/of';
 
+import 'rxjs/add/operator/map';
+
 import { AppComponent } from './app.component';
 import {AngularFireModule} from 'angularfire2';
 import {firebaseConfig} from '../environments/firebase.config';
@@ -14,6 +16,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { GreatThingsListComponent } from './great-things-list/great-things-list.component';
 import { GreatThingItemComponent } from './great-thing-item/great-thing-item.component';
+import { NewThingFormComponent } from './new-thing-form/new-thing-form.component';
+import {GreatThingsFirebaseService} from './services/great-things-firebase.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { GreatThingItemComponent } from './great-thing-item/great-thing-item.com
     FooterComponent,
     HomeComponent,
     GreatThingsListComponent,
-    GreatThingItemComponent
+    GreatThingItemComponent,
+    NewThingFormComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,7 @@ import { GreatThingItemComponent } from './great-thing-item/great-thing-item.com
     AngularFireAuthModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [GreatThingsFirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

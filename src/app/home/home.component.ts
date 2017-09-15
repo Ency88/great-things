@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {GreatThingModel} from '../models/greatThingModel';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +9,10 @@ import {GreatThingModel} from '../models/greatThingModel';
 })
 export class HomeComponent implements OnInit {
 
-  public greatThings: GreatThingModel[];
+  public greatThings: Observable<GreatThingModel[]>;
 
   constructor() {
-    this.greatThings = [
+    this.greatThings = Observable.of([
       {
         title: 'Test title 1',
         subTitle: 'subtitle',
@@ -37,7 +38,7 @@ export class HomeComponent implements OnInit {
         subTitle: 'subtitle',
         imageUrl: 'https://webdev.dartlang.org/assets/angulardart-5e7ebca88c5584b1da301f9f9e61d1e7d4f0688b6a9222991cde3bada950088c.svg'
       }
-    ];
+    ]);
   }
 
   ngOnInit() {

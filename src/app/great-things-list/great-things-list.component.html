@@ -1,4 +1,4 @@
 <div class="flexContainer">
-  <app-great-thing-item *ngFor="let item of greatThings" [greatThingItem]="item"></app-great-thing-item>
+  <app-great-thing-item *ngFor="let item of greatThings | async" [greatThingItem]="item"></app-great-thing-item>
 </div>
 

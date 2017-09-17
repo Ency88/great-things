@@ -19,6 +19,7 @@ import { GreatThingsListComponent } from './great-things-list/great-things-list.
 import { GreatThingItemComponent } from './great-thing-item/great-thing-item.component';
 import { NewThingFormComponent } from './new-thing-form/new-thing-form.component';
 import {GreatThingsFirebaseService} from './services/great-things-firebase.service';
+import {AuthenticationService} from './services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import {GreatThingsFirebaseService} from './services/great-things-firebase.servi
     AngularFireAuthModule,
     ReactiveFormsModule
   ],
-  providers: [GreatThingsFirebaseService],
+  providers: [GreatThingsFirebaseService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

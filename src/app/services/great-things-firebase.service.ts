@@ -5,22 +5,22 @@ import {AngularFireDatabase} from 'angularfire2/database';
 import {GreatThingModel} from '../models/greatThingModel';
 import {GreatThingUpload} from '../models/greatThingUpload';
 import 'firebase/storage';
-// import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class GreatThingsFirebaseService {
 
   private basePath = '/greatThings';
-  // public greatThings: FirebaseListObservable<GreatThingModel[]>;
 
   constructor(private firebaseDatabase: AngularFireDatabase,
               private firebase: FirebaseApp) {
   }
 
-  // public getAllGreatThings(): Observable<GreatThingModel[]> {
-  //   // return this.firebaseDatabase.list(`${this.basePath}/`)
-  //   //   .map(GreatThingModel.fromJson);
-  // }
+  public getAllGreatThings(): Observable<GreatThingModel[]> {
+    return this.firebaseDatabase.list(`${this.basePath}/`)
+      .map(GreatThingModel.fromJsonArray)
+      .map(array => array.reverse());
+  }
 
   addNew(greatThing: GreatThingUpload) {
     const storage = this.firebase.storage();
@@ -29,7 +29,7 @@ export class GreatThingsFirebaseService {
 
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot: firebase.storage.UploadTaskSnapshot) => {
-        console.log(`Transfered: ${(snapshot.bytesTransferred / snapshot.totalBytes) * 100}`);
+        console.log(`Transferred: ${(snapshot.bytesTransferred / snapshot.totalBytes) * 100}`);
       },
       error => {
         console.error(error);

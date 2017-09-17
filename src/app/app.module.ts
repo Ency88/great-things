@@ -5,6 +5,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import 'rxjs/add/observable/of';
 
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 
 import { AppComponent } from './app.component';
 import {AngularFireModule} from 'angularfire2';

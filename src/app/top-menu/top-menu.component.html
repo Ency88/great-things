@@ -12,9 +12,9 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a>TODO: Erik Kudra (e.kudra@gmail.com)</a></li>
-        <li><a (click)="login()">Login</a></li>
-        <li><a (click)="logOut()">Logout</a></li>
+        <li *ngIf=" authUser?.uid "><a>{{ authUser?.displayName }} ({{ authUser?.email }})</a></li>
+        <li *ngIf=" !authUser?.uid "><a (click)="login()">Login with Google</a></li>
+        <li *ngIf=" authUser?.uid "><a (click)="logOut()">Logout</a></li>
       </ul>
     </div>
   </div>

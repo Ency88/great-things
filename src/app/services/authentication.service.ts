@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireAuth} from 'angularfire2/auth';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthenticationService {
 
-  loggedUserSubject$: BehaviorSubject<Observable<firebase.User | any>> = new BehaviorSubject(Observable.of({}));
+  user: Observable<firebase.User>;
 
-  constructor(private firebaseAuth: AngularFireAuth) { }
+  constructor(private firebaseAuth: AngularFireAuth) {
+    this.user = this.firebaseAuth.authState;
+  }
 
   login(): Observable<any> {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -22,8 +23,6 @@ export class AuthenticationService {
 
     promise
       .then(res => {
-          this.loggedUserSubject$.next(this.firebaseAuth.authState);
-          console.log(this.firebaseAuth.authState);
           subject.next(res);
           subject.complete();
         },
@@ -37,7 +36,6 @@ export class AuthenticationService {
   }
 
   logOut() {
-    this.firebaseAuth.auth.signOut()
-      .then(() => this.loggedUserSubject$.next(Observable.of({})));
+    this.firebaseAuth.auth.signOut();
   }
 }

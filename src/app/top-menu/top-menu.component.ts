@@ -8,7 +8,12 @@ import {AuthenticationService} from '../services/authentication.service';
 })
 export class TopMenuComponent implements OnInit {
 
-  constructor(private authService: AuthenticationService) { }
+  public authUser;
+
+  constructor(private authService: AuthenticationService) {
+    this.authService.user
+      .subscribe(user => this.authUser = user);
+  }
 
   ngOnInit() {
   }

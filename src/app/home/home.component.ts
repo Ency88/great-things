@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {GreatThingModel} from '../models/greatThingModel';
 import {Observable} from 'rxjs/Observable';
 import {GreatThingsFirebaseService} from '../services/great-things-firebase.service';
+import {AuthenticationService} from '../services/authentication.service';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +13,12 @@ import {GreatThingsFirebaseService} from '../services/great-things-firebase.serv
 export class HomeComponent implements OnInit {
 
   public greatThings: Observable<GreatThingModel[]>;
+  public authUser: firebase.User;
 
-  constructor(private firebaseService: GreatThingsFirebaseService) {
+  constructor(private firebaseService: GreatThingsFirebaseService,
+              private authService: AuthenticationService) {
+    this.authService.user
+      .subscribe(user => this.authUser = user);
   }
 
   ngOnInit() {
